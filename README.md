@@ -27,7 +27,6 @@
 5. Η αναζήτηση στο Διαδίκτυο μας έδωσε την πληροφορία ότι site που τρέχουν σε Apache server διαθέτουν ένα /robots.txt. Έτσι ακολουθώντας το http://jt4grrjwzyz3pjkylwfau5xnjaj23vxmhskqaeyfhrfylelw4hvxcuyd.onion/robots.txt.
 
 6. Στο robots, αναγράφεται ότι γίνεται disallow των *.phps σελίδων για τις μηχανές αναζήτησης. Έχοντας περιηγηθεί στο site σε αναζήτηση της λύσης, θυμόμασταν ότι η μοναδική *.php σελίδα που βρήκαμε ήταν η http://jt4grrjwzyz3pjkylwfau5xnjaj23vxmhskqaeyfhrfylelw4hvxcuyd.onion/access.php. Ακολουθώντας λοιπόν την πληροφορία αυτή, μεταβήκαμε στο http://jt4grrjwzyz3pjkylwfau5xnjaj23vxmhskqaeyfhrfylelw4hvxcuyd.onion/access.phps. 
-
 ![alt text](https://github.com/chatziko-ys13/2020-project-2-omadapiraulos/blob/master/screenshots/Screenshot_5.png)
 
 7. Με τον εντοπισμό της σελίδας αυτής, κατέστη σαφές ότι έπρεπε να προσπεράσουμε τις if cases προκειμένου να αποκτήσουμε access σε περαιτέρω πληροφορίες. 
@@ -52,4 +51,7 @@ http://jt4grrjwzyz3pjkylwfau5xnjaj23vxmhskqaeyfhrfylelw4hvxcuyd.onion/access.php
    Έτσι προς το παρόν το μοναδικό clue που μπορούμε να δουλέψουμε είναι η αλλαγή του visitor number πίσω στη σελίδα http://2fvhjskjet3n5syd6yfg5lhvwcs62bojmthr35ko5bllr3iqdb4ctdyd.onion/.
    
 11. Έχοντας ήδη αναγνωρίσει ότι το document.cookie περιέχει το prefix "Visitor=", υποπτευθήκαμε ότι το υπόλοιπο string είναι η κρυπτογραφημένη μορφή του visitor number. 
-   ![alt text](https://github.com/chatziko-ys13/2020-project-2-omadapiraulos/blob/master/screenshots/Screenshot_9.png)
+   ![alt text](https://github.com/chatziko-ys13/2020-project-2-omadapiraulos/blob/master/screenshots/Screenshot_9.png) <br>
+Αρχικά ψάχνοντας για κρυπτογραφημένα cookie στον Apache βρήκαμε σε αυτή την σελίδα https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwj46YObvYHqAhX8QEEAHR9WBB8QFjAAegQIAhAB&url=https%3A%2F%2Fstackoverflow.com%2Fquestions%2F32589998%2Fapache-cookie-decrypt-flask-session&usg=AOvVaw0HZBwP3iQGKjV45yztef7y ότι το cookie είναι base64 encoded. Σε μια πρώτη προσπάθεια αποκρυπτογράφησης βγήκε ο προϋπάρχων visitor number στην αρχή ακολουθούμενος από ένα ακόμα κρυπτογραφημένο string. Το νούμερο που υπήρχε σε αυτή την θέση αντικατστάθηκε από το 100013 και κρυπτογραφήσαμε ξανά με base64 το cookie, όμως στην δοκιμασία του έβγαλε error bad sha στην θέση που θα έβγαινε ο αριθμός που θέλαμε. Έτσι καταλάβαμε ότι το υπόλοιπο string ήταν ο ίδιος αριθμός κρυπτογραφημένος σε sha256. Αυτή την φορά ακολουθήσαμε την σωστή διαδικασία και μας επιτράπει η είσοδος στην επόμενη σελίδα.
+
+12. 
