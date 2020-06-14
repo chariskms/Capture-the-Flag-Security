@@ -90,7 +90,7 @@ http://jt4grrjwzyz3pjkylwfau5xnjaj23vxmhskqaeyfhrfylelw4hvxcuyd.onion/access.php
 3. Το link http://4tpgiulwmoz4sphv.onion/ στο diary2, παράγει ένα prompt που ζητάει όνομα χρήστη και κωδικό. Εκμεταλλευόμενοι το βήμα 2, δοκιμάσαμε επαναληπτικά να δίνουμε τιμή στο username "%x %s", με σταδιακά αυξανόμενα %x. Όταν δώσαμε την τιμή "%x %x %x %x %x %x %s" πήραμε το μήνυμα:
    ![alt text](https://github.com/chatziko-ys13/2020-project-2-omadapiraulos/blob/master/screenshots/Screenshot_19.png)
 
-4. Αφού πλέον είχαμε username: admin και ένα κωδικοποιημένο password σε md5, κάτι που καταλάβαμε από τον κώδικα του pico server. Έτσι αποκρυπτογραφήσαμε το hash:
+4. Αφού πλέον είχαμε username: admin και ένα κωδικοποιημένο password σε md5, κάτι που καταλάβαμε από τον κώδικα του pico server. Έτσι αποκρυπτογραφήσαμε το hash:<br>
    ![alt text](https://github.com/chatziko-ys13/2020-project-2-omadapiraulos/blob/master/screenshots/Screenshot_20.png)
    
 5. Εισάγοντας τα σωστά πλεόν credentials ανακατευθυνθήκαμε στη σελίδα:
