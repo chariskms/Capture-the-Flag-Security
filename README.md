@@ -67,12 +67,34 @@ http://jt4grrjwzyz3pjkylwfau5xnjaj23vxmhskqaeyfhrfylelw4hvxcuyd.onion/access.php
 και βρήκαμε τον κωδικό 2355437c5f30fd2390a314b7d52fb3d24583ef97, που θεωρητικά δίνει την τοποθεσία του Γιώργου.
 
 14. Καταλήξαμε ότι ο κωδικός αυτός είναι από ένα commit hash στο git (οι συνομιλίες του Γιώργου ήταν κατατοπιστικές).
-
-   ![alt text](https://github.com/chatziko-ys13/2020-project-2-omadapiraulos/blob/master/screenshots/Screenshot_15.png)
-   
+   ![alt text](https://github.com/chatziko-ys13/2020-project-2-omadapiraulos/blob/master/screenshots/Screenshot_15.png)<br>
    Εκτελώντας τα βήματα που παρατέθηκαν, καταλήξαμε στις συντεταγμένες:
+   **x= 47.77688064386404676504**
+   **y= 4.41200375698630469266**
    
-   *x= 47.77688064386404676504*
+15.  Αναζητώντας τις συντεταγμένες, αποφανθήκαμε ότι ο Γιώργος βρίσκεται στη Γαλλία:
+   ![alt text](https://github.com/chatziko-ys13/2020-project-2-omadapiraulos/blob/master/screenshots/Screenshot_16.png)
+   ![alt text](https://github.com/chatziko-ys13/2020-project-2-omadapiraulos/blob/master/screenshots/Screenshot_17.png)
+
    
-   *y= 4.41200375698630469266*
    
+## Ερώτημα 2
+
+1. Συνεχίζοντας από το βήμα 8 του προηγούμενου ερωτήματος και ερευνώντας περαιτέρω το blog της Υβόννης, είδαμε το http://jt4grrjwzyz3pjkylwfau5xnjaj23vxmhskqaeyfhrfylelw4hvxcuyd.onion/blogposts7589109238/blogposts/diary2.html. Απο το σημείο αυτό, καταλάβαμε ότι πρέπει να εκπαιδευτούμε με τον pico server.
+
+2. Αφού τον στήσαμε σε δικό μας μηχάνημα και σχολιάσαμε τη read-file από το δοθέν παράδειγμα, τρέξαμε το server. Εκεί, το compilation μας έδωσε μια πολύτιμη πληροφορία. 
+   ![alt text](https://github.com/chatziko-ys13/2020-project-2-omadapiraulos/blob/master/screenshots/Screenshot_18.png)
+   
+   Το μήνυμα αυτό ουσιαστικά δηλώνει, ότι δε συμπεριλάβαμε τύπο μεταβλητής στην εκτύπωση, αλλά αντ' αυτού εκτυπώνουμε αυθαίρετα τη μεταβλητή. Αυτό μας έδωσε την ιδέα ότι μπορούμε να εκτυπώσουμε σε αντίστοιχο server τα περιεχόμενα της στοίβας.
+   
+3. Το link http://4tpgiulwmoz4sphv.onion/ στο diary2, παράγει ένα prompt που ζητάει όνομα χρήστη και κωδικό. Εκμεταλλευόμενοι το βήμα 2, δοκιμάσαμε επαναληπτικά να δίνουμε τιμή στο username "%x %s", με σταδιακά αυξανόμενα %x. Όταν δώσαμε την τιμή "%x %x %x %x %x %x %s" πήραμε το μήνυμα:
+   ![alt text](https://github.com/chatziko-ys13/2020-project-2-omadapiraulos/blob/master/screenshots/Screenshot_19.png)
+
+4. Αφού πλέον είχαμε username: admin και ένα κωδικοποιημένο password σε md5, κάτι που καταλάβαμε από τον κώδικα του pico server. Έτσι αποκρυπτογραφήσαμε το hash:
+   ![alt text](https://github.com/chatziko-ys13/2020-project-2-omadapiraulos/blob/master/screenshots/Screenshot_20.png)
+   
+5. Εισάγοντας τα σωστά πλεόν credentials ανακατευθυνθήκαμε στη σελίδα:
+   ![alt text](https://github.com/chatziko-ys13/2020-project-2-omadapiraulos/blob/master/screenshots/Screenshot_21.png)<br>
+   στην οποία φαίνεται ότι αυτό που λείπει από το Plan X είναι ένας **solar wind analyzer**.
+
+
