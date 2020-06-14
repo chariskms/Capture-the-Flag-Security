@@ -47,7 +47,7 @@ http://jt4grrjwzyz3pjkylwfau5xnjaj23vxmhskqaeyfhrfylelw4hvxcuyd.onion/access.php
 10. Μέσω αναζήτησης στα posts, βρήκαμε το post3.html:
    ![alt text](https://github.com/chatziko-ys13/2020-project-2-omadapiraulos/blob/master/screenshots/Screenshot_8.png)
    Από αυτό είχαμε 2 στοιχεία:
-   * Το secret είναι "raccoon"
+   * Το secret είναι "raccoon".
    * Πρέπει να μετατρέψουμε το visitor number μας σε #100013.
    Έτσι προς το παρόν το μοναδικό clue που μπορούμε να δουλέψουμε είναι η αλλαγή του visitor number πίσω στη σελίδα http://2fvhjskjet3n5syd6yfg5lhvwcs62bojmthr35ko5bllr3iqdb4ctdyd.onion/.
    
