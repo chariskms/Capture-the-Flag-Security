@@ -52,6 +52,27 @@ http://jt4grrjwzyz3pjkylwfau5xnjaj23vxmhskqaeyfhrfylelw4hvxcuyd.onion/access.php
    
 11. Έχοντας ήδη αναγνωρίσει ότι το document.cookie περιέχει το prefix "Visitor=", υποπτευθήκαμε ότι το υπόλοιπο string είναι η κρυπτογραφημένη μορφή του visitor number. 
    ![alt text](https://github.com/chatziko-ys13/2020-project-2-omadapiraulos/blob/master/screenshots/Screenshot_9.png) <br>
-Αρχικά ψάχνοντας για κρυπτογραφημένα cookie στον Apache βρήκαμε σε αυτή την σελίδα https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwj46YObvYHqAhX8QEEAHR9WBB8QFjAAegQIAhAB&url=https%3A%2F%2Fstackoverflow.com%2Fquestions%2F32589998%2Fapache-cookie-decrypt-flask-session&usg=AOvVaw0HZBwP3iQGKjV45yztef7y ότι το cookie είναι base64 encoded. Σε μια πρώτη προσπάθεια αποκρυπτογράφησης βγήκε ο προϋπάρχων visitor number στην αρχή ακολουθούμενος από ένα ακόμα κρυπτογραφημένο string. Το νούμερο που υπήρχε σε αυτή την θέση αντικατστάθηκε από το 100013 και κρυπτογραφήσαμε ξανά με base64 το cookie, όμως στην δοκιμασία του έβγαλε error bad sha256... στην θέση που θα έβγαινε ο αριθμός που θέλαμε. Έτσι καταλάβαμε ότι το υπόλοιπο string ήταν ο ίδιος αριθμός κρυπτογραφημένος σε sha256. Αυτή την φορά ακολουθήσαμε την σωστή διαδικασία και μας επιτράπει η είσοδος στην επόμενη σελίδα. <br>
+Αρχικά ψάχνοντας για κρυπτογραφημένα cookie στον Apache βρήκαμε σε αυτή την σελίδα https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwj46YObvYHqAhX8QEEAHR9WBB8QFjAAegQIAhAB&url=https%3A%2F%2Fstackoverflow.com%2Fquestions%2F32589998%2Fapache-cookie-decrypt-flask-session&usg=AOvVaw0HZBwP3iQGKjV45yztef7y ότι το cookie είναι base64 encoded. Σε μια πρώτη προσπάθεια αποκρυπτογράφησης βγήκε ο προϋπάρχων visitor number στην αρχή, ακολουθούμενος από ένα ακόμα κρυπτογραφημένο string. Το νούμερο που υπήρχε σε αυτή την θέση αντικατστάθηκε από το 100013 και κρυπτογραφήσαμε ξανά με base64 το cookie, όμως στην δοκιμασία αυτή, έβγαλε error "bad sha256..." . Έτσι, μετά από αποκρυπτογράφηση, καταλάβαμε ότι το υπόλοιπο string ήταν ο ίδιος αριθμός κρυπτογραφημένος σε sha256. Αυτή την φορά ακολουθήσαμε την σωστή διαδικασία και μας επιτράπει η είσοδος στην επόμενη σελίδα. <br>
    ![alt text](https://github.com/chatziko-ys13/2020-project-2-omadapiraulos/blob/master/screenshots/Screenshot_11.png)
-12. ![alt text](https://github.com/chatziko-ys13/2020-project-2-omadapiraulos/blob/master/screenshots/Screenshot_12.png)
+   ![alt text](https://github.com/chatziko-ys13/2020-project-2-omadapiraulos/blob/master/screenshots/Screenshot_12.png)
+
+12. Ανακατευθυνομένοι έτσι στη σωστή σελίδα, ανακαλύψαμε τα logs που αναφέρονταν νωρίτερα και γνωρίζουμε ότι ανήκουν στο Γιώργο. 
+![alt text](https://github.com/chatziko-ys13/2020-project-2-omadapiraulos/blob/master/screenshots/Screenshot_13.png)
+Με τη βοήθεια του παραπάνω παραδείγματος, καταλάβαμε ότι πρέπει να ανακαλύψουμε την ημερομηνία κρυπτογράφησης. Το secret (στο παράδειγμα cement) το ανακαλύψαμε ήδη στο βήμα 10, ως raccoon. Προκειμένου λοιπόν να βρούμε τη σωστή ημερομηνία, δημιουργήσαμε ένα script που με brute force, δοκιμάζει ημερομηνίες ως prefix, κωδικοποιημένες κατάλληλα, μέχρι να βρει τη 1 που ταιριάζει με το δοθέν passphrase.key και άρα το log που μας ενδιαφέρει. Το script σε python:
+   ![alt text](https://github.com/chatziko-ys13/2020-project-2-omadapiraulos/blob/master/screenshots/Screenshot_14.png)
+, το οποίο μας έδωσε και το επιθυμητό κλειδί. 
+
+13. Με τη χρήση του gpg αποκρυπτογραφήσαμε τις συνομιλίες του Γιώργου:
+![alt text](https://github.com/chatziko-ys13/2020-project-2-omadapiraulos/blob/master/screenshots/Screenshot_10.png)
+και βρήκαμε τον κωδικό 2355437c5f30fd2390a314b7d52fb3d24583ef97, που θεωρητικά δίνει την τοποθεσία του Γιώργου.
+
+14. Καταλήξαμε ότι ο κωδικός αυτός είναι από ένα commit hash στο git (οι συνομιλίες του Γιώργου ήταν κατατοπιστικές).
+
+   ![alt text](https://github.com/chatziko-ys13/2020-project-2-omadapiraulos/blob/master/screenshots/Screenshot_15.png)
+   
+   Εκτελώντας τα βήματα που παρατέθηκαν, καταλήξαμε στις συντεταγμένες:
+   
+   *x= 47.77688064386404676504*
+   
+   *y= 4.41200375698630469266*
+   
