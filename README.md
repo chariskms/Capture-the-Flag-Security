@@ -97,4 +97,18 @@ http://jt4grrjwzyz3pjkylwfau5xnjaj23vxmhskqaeyfhrfylelw4hvxcuyd.onion/access.php
    ![alt text](https://github.com/chatziko-ys13/2020-project-2-omadapiraulos/blob/master/screenshots/Screenshot_21.png)<br>
    στην οποία φαίνεται ότι αυτό που λείπει από το Plan X είναι ένας **solar wind analyzer**.
 
+## Ερώτημα 3
 
+Για το ερώτημα 3 η πρόοδος μας ήταν περιορισμένη. Μέσω του http://4tpgiulwmoz4sphv.onion/ καταλάβαμε ότι κάπως έπρεπε να περάσουμε στην ultimate.html χωρίς να πάρουμε Forbidden. Ανάζητώντας λύση καταλάβαμε ότι ο pico server ήταν και πάλι το κλειδί για το επόμενο βήμα, καθώς ο έλεγχος για την ultimate.html βρίσκεται εκεί. 
+   ![alt text](https://github.com/chatziko-ys13/2020-project-2-omadapiraulos/blob/master/screenshots/Screenshot_22.png)<br>
+
+Έτσι πλέον γνωρίζαμε τον κώδικα που έτρεχε πίσω από τη σελίδα. Οπότε επόμενος στόχος ήταν η επίτευξη της τιμής 1 στην μεταβλητή allowed.
+
+Μέσω επανηλλειμένων δοκιμών για curl της μορφής:
+
+```
+curl 'http://127.0.0.1:8000/ultimate.html' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0' -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Referer: http://127.0.0.1:8000/' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Origin: http://127.0.0.1:8000' -H 'Authorization: Basic YWRtaW46MTIzNA==' -H 'Connection: keep-alive' -H 'Upgrade-Insecure-Requests: 1' -H 'Cache-Control: max-age=0' --http0.9 --data-raw 'admin_pwd[]=""&submit=go'
+```
+, χωρίς όμως επιτυχία καθώς η δοθείσα τιμή θεωρήθηκε NULL και λοιπές προσπάθειες έπεσαν στο κενό. Με την βοήθεια του κύριου Χατζηκοκολάκη μάθαμε ότι ο στόχος δεν ήταν η επιτυχής απόδοση τιμής στη μεταβλητή allowed, αλλά το bypass του ελέγχου μέσω ενός ακόμη buffer overflow. Καθώς δεν είχαμε πλέον χρόνο, η προσπάθεια έμεινε στη μέση. 
+
+Ευχαριστούμε πολύ!
